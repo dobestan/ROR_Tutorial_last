@@ -1,59 +1,44 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+  subject { page }
 
   # Home Page
   describe "Home Page" do
+    before { visit root_path }
+
     it "should repond to http get" do
-      get static_pages_home_path
+      get root_path 
       response.status.should be 200
     end
 
-    it "should have the title 'Home'" do
-      visit "/static_pages/home"
-      expect(page).to have_title('Home')
-    end
-
-    it "should have the base title" do
-      visit "/static_pages/home"
-      expect(page).to have_title "Ruby on Rails Tutorial Sample App"
-    end
+    it { should have_title('Home') }
+    it { should have_title "Ruby on Rails Tutorial Sample App" }
   end
 
   # Help Page
   describe "Help Page" do
+    before { visit help_path }
+
     it "should respond to http get" do
-      get static_pages_help_path
+      get help_path 
       response.status.should be 200
     end
 
-    it "should have the title 'Help'" do
-      visit "/static_pages/help"
-      expect(page).to have_title "Help"
-    end
-
-    it "should have the base title" do
-      visit "/static_pages/help"
-      expect(page).to have_title "Ruby on Rails Tutorial Sample App"
-    end
+    it { should have_title('Help') }
+    it { should have_title "Ruby on Rails Tutorial Sample App" }
   end
 
   # About Page
   describe "About Page" do
+    before { visit about_path }
+
     it "should respond to http get" do
-      get static_pages_about_path
+      get about_path
       response.status.should be 200
     end
 
-    it "should have the title 'About'" do
-      visit "/static_pages/about"
-      expect(page).to have_title "About"
-    end
-
-    it "should have the base title" do
-      visit "/static_pages/about"
-      expect(page).to have_title "Ruby on Rails Tutorial Sample App"
-    end
+    it { should have_title('About') }
+    it { should have_title "Ruby on Rails Tutorial Sample App" }
   end
-
 end
